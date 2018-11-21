@@ -1,0 +1,40 @@
+const Discord = require('discord.js');
+const client = new Discord.Client();
+const auth = require("./auth.json")
+client.login(auth.token);
+
+client.on('message', message => {
+  // Voice only works in guilds, if the message does not come from a guild,
+  // we ignore it
+  if (!message.guild) return;
+
+  if (message.content === '/join') {
+    // Only try to join the sender's voice channel if they are in one themselves
+    if (message.member.voiceChannel) {
+      message.member.voiceChannel.join()
+        .then(connection => { // Connection is an instance of VoiceConnection
+          var receiver = connection.createReceiver();
+          message.reply('I have successfully connected to the channel!');
+        })
+        .catch(console.log);
+    } else {
+      message.reply('You need to join a voice channel first!');
+    }
+  }
+  conn.on('speaking', (user, speaking) => {
+          if (speaking) {
+            msg.channel.sendMessage(`I'm listening to ${user}`);
+            // this creates a 16-bit signed PCM, stereo 48KHz PCM stream.
+            const audioStream = receiver.createPCMStream(user);
+            // create an output stream so we can dump our data in a file
+            const outputStream = generateOutputFile(voiceChannel, user);
+            // pipe our audio data into the file stream
+            audioStream.pipe(outputStream);
+            outputStream.on("data", console.log);
+            // when the stream ends (the user stopped talking) tell the user
+            audioStream.on('end', () => {
+              msg.channel.sendMessage(`I'm no longer listening to ${user}`);
+            });
+          }
+        });
+});

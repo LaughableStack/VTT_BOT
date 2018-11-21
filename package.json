@@ -1,0 +1,20 @@
+{
+  "name": "greeter-bot",
+  "version": "1.0.0",
+  "description": "My own Discord bot",
+  "main": "start.js",
+  "author": "1universe",
+  "dependencies": {
+    "article-title": "^2.0.0",
+    "compromise": "^11.11.0",
+    "discord.js": "11.0.0",
+    "ffmpeg": "0.0.4",
+    "ffmpeg-binaries": "^4.0.0",
+    "keyword-extractor": "0.0.15",
+    "natural": "^0.6.1",
+    "opusscript": "0.0.6",
+    "request": "^2.87.0",
+    "winston": "^3.0.0",
+    "wordpos": "^1.1.6"
+  }
+}
